@@ -3,6 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import Home from './components/home';
 import Welcome from './components/Welcome';
+import NotificationForm from './components/notification';
 
 class App extends Component{
   render() {
@@ -10,6 +11,7 @@ class App extends Component{
       <div className="App"> 
         <Home></Home>
         <Welcome />
+        <NotificationForm></NotificationForm>
       </div>
     );
   }
