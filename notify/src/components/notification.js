@@ -6,7 +6,8 @@ const NotificationForm = () => {
     time: '',
     name: '',
     sound: '',
-    shape: ''
+    shape: '',
+    days:[]
   });
 
   const handleInputChange = (event) => {
