@@ -17,8 +17,38 @@ const NotificationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Here you can do something with the notification object, such as send it to a server or display it on the page
-  }
+  
+    // Extract form data
+    const formData = {};
+    const formElements = event.target.elements;
+    for (let i = 0; i < formElements.length; i++) {
+      const input = formElements[i];
+      if (input.name) {
+        formData[input.name] = input.value;
+      }
+    }
+  
+    // Format form data
+    const formDataDiv = document.createElement("div");
+    formDataDiv.classList.add("form-data");
+  
+    const title = document.createElement("h2");
+    title.textContent = "Form Data";
+    formDataDiv.appendChild(title);
+  
+    const list = document.createElement("ul");
+    for (const [key, value] of Object.entries(formData)) {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `<strong>${key}:</strong> ${value}`;
+      list.appendChild(listItem);
+    }
+    formDataDiv.appendChild(list);
+  
+    document.body.appendChild(formDataDiv);
+  };
+  
+  
+  
   const handleDayChange = (event) => {
     const day = event.target.name;
     const isChecked = event.target.checked;
