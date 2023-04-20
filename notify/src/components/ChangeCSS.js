@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function changeCSS() {
+function ChangeCSS() {
   const [color, setColor] = useState('red');
   const [fontSize, setFontSize] = useState('16px');
 
@@ -16,3 +16,5 @@ function changeCSS() {
     </div>
   );
 }
+
+export default ChangeCSS;

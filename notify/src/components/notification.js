@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import ChangeCSS from './ChangeCSS.js';
+
 
 const NotificationForm = () => {
   const [notification, setNotification] = useState({
@@ -10,6 +12,7 @@ const NotificationForm = () => {
     days:[]
   });
 
+  const [backgroundColor, setBackgroundColor] = useState('red');
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNotification(prevState => ({ ...prevState, [name]: value }));
@@ -17,7 +20,7 @@ const NotificationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
+    setBackgroundColor('blue');
     // Extract form data
     const formData = {};
     const formElements = event.target.elements;
@@ -45,6 +48,16 @@ const NotificationForm = () => {
     formDataDiv.appendChild(list);
   
     document.body.appendChild(formDataDiv);
+
+    // const [isDone, setIsDone] = useState(false);
+
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //     setIsDone(true);
+    //   }, 30000);
+    // }, []);
+    // {isDone == true}
+    // ChangeCSS();
   };
   
   
@@ -70,7 +83,7 @@ const NotificationForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={{backgroundColor:backgroundColor}}>
         <label>
         Name:
         <input type="text" name="name" value={notification.name} onChange={handleInputChange} />
