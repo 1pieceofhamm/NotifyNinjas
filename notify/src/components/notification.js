@@ -13,6 +13,7 @@ const NotificationForm = () => {
   });
 
   const [backgroundColor, setBackgroundColor] = useState('red');
+  const [isDone, setIsDone] = useState(false);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setNotification(prevState => ({ ...prevState, [name]: value }));
@@ -20,7 +21,14 @@ const NotificationForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setBackgroundColor('blue');
+    setTimeout(() => {
+      console.log('Finished!');
+      setIsDone(true)
+      setBackgroundColor('blue');
+    }, 30000);
+    //while(isDone){
+      
+    //}
     // Extract form data
     const formData = {};
     const formElements = event.target.elements;
