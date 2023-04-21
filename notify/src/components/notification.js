@@ -23,8 +23,8 @@ const NotificationForm = () => {
     event.preventDefault();
     setTimeout(() => {
       console.log('Finished!');
-      setIsDone(true)
-      setBackgroundColor('blue');
+      setIsDone(!isDone)
+      setBackgroundColor(isDone ? 'blue' : 'green');
     }, 30000);
     //while(isDone){
       
