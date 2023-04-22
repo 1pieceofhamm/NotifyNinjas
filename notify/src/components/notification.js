@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChangeCSS from './ChangeCSS.js';
 
 
-const NotificationForm = () => {
+const NotificationForm = (props) => {
   const [notification, setNotification] = useState({
     color: '',
     time: '',
@@ -25,6 +25,7 @@ const NotificationForm = () => {
       console.log('Finished!');
       setIsDone(!isDone)
       setBackgroundColor(isDone ? 'blue' : 'green');
+      props.onBackgroundChange(isDone ? 'blue' : 'green');
     }, 30000);
     //while(isDone){
       

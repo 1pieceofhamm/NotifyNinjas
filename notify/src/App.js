@@ -6,12 +6,24 @@ import Welcome from './components/Welcome';
 import NotificationForm from './components/notification';
 
 class App extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      backgroundColor: 'white',
+    };
+    this.handleBackgroundChange = this.handleBackgroundChange.bind(this);
+  }
+
+  handleBackgroundChange(color) {
+    this.setState({ backgroundColor: color });
+  }
+
   render() {
     return (
-      <div className="App"> 
+      <div className="App" style={{ backgroundColor: this.state.backgroundColor }}> 
         <Home></Home>
         <Welcome />
-        <NotificationForm></NotificationForm>
+        <NotificationForm onBackgroundChange={this.handleBackgroundChange} ></NotificationForm>
       </div>
     );
   }
