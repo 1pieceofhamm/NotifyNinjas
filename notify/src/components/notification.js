@@ -12,7 +12,7 @@ const NotificationForm = (props) => {
     days:[]
   });
 
-  const [backgroundColor, setBackgroundColor] = useState('red');
+  const [backgroundColor, setBackgroundColor] = useState('white');
   const [isDone, setIsDone] = useState(false);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -21,12 +21,14 @@ const NotificationForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    /*
     setTimeout(() => {
       console.log('Finished!');
       setIsDone(!isDone)
       setBackgroundColor(isDone ? 'blue' : 'green');
       props.onBackgroundChange(isDone ? 'blue' : 'green');
-    }, 30000);
+    }, 10);
+    */
     //while(isDone){
       
     //}
@@ -39,6 +41,8 @@ const NotificationForm = (props) => {
         formData[input.name] = input.value;
       }
     }
+    const userSelectedColor = formData.color;
+    setBackgroundColor(userSelectedColor);
   
     // Format form data
     const formDataDiv = document.createElement("div");
@@ -92,7 +96,7 @@ const NotificationForm = (props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{backgroundColor:backgroundColor}}>
+    <form onSubmit={handleSubmit} style={{backgroundColor:backgroundColor, height: '100vh'}}>
         <label>
         Name:
         <input type="text" name="name" value={notification.name} onChange={handleInputChange} />

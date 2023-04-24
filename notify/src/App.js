@@ -22,7 +22,6 @@ class App extends Component{
     return (
       <div className="App" style={{ backgroundColor: this.state.backgroundColor }}> 
         <Home></Home>
-        <Welcome />
         <NotificationForm onBackgroundChange={this.handleBackgroundChange} ></NotificationForm>
       </div>
     );
