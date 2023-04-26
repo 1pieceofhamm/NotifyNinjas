@@ -12,7 +12,7 @@ const NotificationForm = (props) => {
     days:[]
   });
 
-  const [backgroundColor, setBackgroundColor] = useState('red');
+  const [backgroundColor, setBackgroundColor] = useState('white');
   const [isDone, setIsDone] = useState(false);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
