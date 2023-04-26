@@ -21,6 +21,10 @@ const NotificationForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const bellSound = new Audio('/bell.mp3');
+    bellSound.play();
+    
     /*
     setTimeout(() => {
       console.log('Finished!');
