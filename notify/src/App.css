@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+.btn-primary, .btn-primary:active, .btn-primary:visited {
+  background-color: #3f3f3f !important;
+}
+.btn-primary:hover,.btn-primary--bs-btn-border-color{
+  background-color: #000000 !important;
+}

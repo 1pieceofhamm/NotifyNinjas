@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ChangeCSS from './ChangeCSS.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const NotificationForm = (props) => {
@@ -8,7 +9,6 @@ const NotificationForm = (props) => {
     time: '',
     name: '',
     sound: '',
-    shape: '',
     days:[]
   });
 
@@ -43,24 +43,30 @@ const NotificationForm = (props) => {
     }
     const userSelectedColor = formData.color;
     setBackgroundColor(userSelectedColor);
+    props.onBackgroundChange(userSelectedColor);
   
     // Format form data
-    const formDataDiv = document.createElement("div");
-    formDataDiv.classList.add("form-data");
+    //const formDataDiv = document.createElement("div");
+    //formDataDiv.classList.add("form-data");
   
     const title = document.createElement("h2");
-    title.textContent = "Form Data";
-    formDataDiv.appendChild(title);
+    title.textContent = formData.name + " " + formData.time;
+    title.style.position = "absolute";
+    title.style.top = "50%";
+    title.style.left = "50%";
+    title.style.transform = "translate(-50%, -50%)";
+    title.style.fontSize = '75px';
+    document.body.appendChild(title);
   
-    const list = document.createElement("ul");
+    /*const list = document.createElement("ul");
     for (const [key, value] of Object.entries(formData)) {
       const listItem = document.createElement("li");
       listItem.innerHTML = `<strong>${key}:</strong> ${value}`;
       list.appendChild(listItem);
     }
     formDataDiv.appendChild(list);
-  
-    document.body.appendChild(formDataDiv);
+    */
+    //document.body.appendChild(formDataDiv);
 
     // const [isDone, setIsDone] = useState(false);
 
@@ -97,17 +103,17 @@ const NotificationForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} style={{backgroundColor:backgroundColor, height: '100vh'}}>
-        <label>
+        <label class="form-group col">
         Name:
-        <input type="text" name="name" value={notification.name} onChange={handleInputChange} />
+        <input type="text"  class="form-control" name="name" placeholder="Notification Name" value={notification.name} onChange={handleInputChange} />
       </label>
-      <label>
+      <label class="form-group">
   Time:
-  <input type="time" name="time" value={notification.time} onChange={handleInputChange} />
+  <input type="time" class="form-control" name="time" value={notification.time} onChange={handleInputChange} />
 </label>
-<label>
+<label class="form-group col">
   Schedule:
-  <select name="schedule" value={notification.schedule} onChange={handleInputChange}>
+  <select name="schedule" class="form-select" value={notification.schedule} onChange={handleInputChange}>
     <option value="one-time">One-time</option>
     <option value="daily">Daily</option>
     <option value="weekly">Weekly</option>
@@ -146,31 +152,23 @@ const NotificationForm = (props) => {
     </fieldset>
   )}
 </label>
-      <label>
+      <label class="form-group col">
         Color:
-        <select name="color" value={notification.color} onChange={handleInputChange}>
+        <select name="color" class="form-select" value={notification.color} onChange={handleInputChange}>
             <option value="red">Red</option>
             <option value="green">Green</option>
             <option value="blue">Blue</option>
         </select>
     </label>
-    <label>
-        Shape:
-        <select name="shape" value={notification.shape} onChange={handleInputChange}>
-            <option value="square">Square</option>
-            <option value="circle">Circle</option>
-            <option value="triangle">Triangle</option>
-        </select>
-        </label>
-      <label>
+      <label class="form-group col">
         Sound:
-        <select name="sound" value={notification.sound} onChange={handleInputChange}>
+        <select name="sound" class="form-select" value={notification.sound} onChange={handleInputChange}>
             <option value="bell">Bell</option>
             <option value="horn">Horn</option>
             <option value="whistle">Whistle</option>
         </select>
         </label>
-      <button type="submit">Create Notification</button>
+      <button type="submit" class="btn btn-primary col">Create Notification</button>
     </form>
   );
 }
